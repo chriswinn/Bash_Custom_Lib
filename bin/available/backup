@@ -83,7 +83,7 @@
 		# Script: Default Command
 		# Section
 		############################
-		DEFAULT_SCRIPT_COMMAND="$HOME/.bin/lib/script/_command.default"
+		DEFAULT_SCRIPT_COMMAND="$HOME/.bash_custom/bin/lib/script/_command.default"
 		#### rsync - script settings
 		    if [ -f $DEFAULT_SCRIPT_COMMAND ]; then
 				verbose.print "# Importing rsync default settings from '$DEFAULT_SCRIPT_COMMAND'."
