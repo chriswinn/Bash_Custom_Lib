@@ -1,3 +1,1 @@
-#!/bin/sh
-
-sftp-to chriswinn.strongspace.com $*
+../available/sftp.strongspace

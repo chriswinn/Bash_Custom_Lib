@@ -1,4 +1,1 @@
-#!/bin/sh
-
-
-ssh-to entebee.joyent.us $*
+../available/dora

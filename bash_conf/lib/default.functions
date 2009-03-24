@@ -117,9 +117,9 @@ export -f script_flags.reset
 # If Growl Notifications are on then,
 # print whatever is sent to this function
 GROWL_NOTIFICATIONS=NO
-GROWLPASSED_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/ok.jpg")
-GROWLPENDING_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/pending.jpg")
-GROWLFAILED_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/fail.jpg")
+GROWLPASSED_IMAGE=("--image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/ok.jpg")
+GROWLPENDING_IMAGE=("--image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/pending.jpg")
+GROWLFAILED_IMAGE=("--image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/fail.jpg")
 growl.notification.reset()
 {
 export GROWL_NOTIFICATIONS=NO

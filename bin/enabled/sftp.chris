@@ -1,4 +1,1 @@
-#!/bin/sh
-
-
-sftp-to wolfback.joyent.us $*
+../available/sftp.chris

@@ -1,4 +1,1 @@
-#!/bin/sh
-
-
-sftp-to entebee.joyent.us $*
+../available/sftp.dora

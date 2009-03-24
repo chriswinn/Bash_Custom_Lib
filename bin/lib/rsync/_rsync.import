@@ -11,7 +11,7 @@
 # Script: Flags
 # Section
 ############################
-DEFAULT_SCRIPT="$HOME/.bin/lib/script/_flags.filename"
+DEFAULT_SCRIPT="$HOME/.bash_custom/bin/lib/script/_flags.filename"
 #### script - flags
     if [ -f $DEFAULT_SCRIPT ]; then
 		verbose.print "# Setting the $SCRIPT_NAME flags from '$DEFAULT_SCRIPT'."
@@ -24,7 +24,7 @@ DEFAULT_SCRIPT="$HOME/.bin/lib/script/_flags.filename"
 # Rsync: Options
 # Section
 ############################
-DEFAULT_RSYNC_OPTIONS="$HOME/.bin/lib/rsync/_rsync.opts"
+DEFAULT_RSYNC_OPTIONS="$HOME/.bash_custom/bin/lib/rsync/_rsync.opts"
 #### rsync - options
     if [ -f $DEFAULT_RSYNC_OPTIONS ]; then
 		verbose.print "# Setting the rsync options from '$DEFAULT_RSYNC_OPTIONS'."
@@ -37,7 +37,7 @@ DEFAULT_RSYNC_OPTIONS="$HOME/.bin/lib/rsync/_rsync.opts"
 # Rsync: Exclusions
 # Section
 ############################
-DEFAULT_RSYNC_EXCLUDES="$HOME/.bin/lib/rsync/_rsync.exclusions"
+DEFAULT_RSYNC_EXCLUDES="$HOME/.bash_custom/bin/lib/rsync/_rsync.exclusions"
 #### rsync - exclusions "$EXCLUDES"
 	# ignore Mac droppings
     if [ -f $DEFAULT_RSYNC_EXCLUDES ]; then

@@ -16,8 +16,8 @@
 	# Section
 	############################
 		########## Setting up the python path env variable for django 
-		export PYTHONPATH=$HOME/work/_MyCompanies/clearthinker.com/trunk/clearthinker:$PYTHONPATH
-		export PYTHONPATH=$HOME/work/websites/comtohr/trunk/comtohr:$PYTHONPATH
+		export PYTHONPATH=$HOME/Work/_MyCompanies/clearthinker.com/trunk/clearthinker:$PYTHONPATH
+		export PYTHONPATH=$HOME/Work/websites/comtohr/trunk/comtohr:$PYTHONPATH
 
 	############################
 	# Django: Settings Env Variables

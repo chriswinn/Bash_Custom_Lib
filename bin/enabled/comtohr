@@ -1,4 +1,1 @@
-#!/bin/sh
-
-
-ssh root@209.20.86.153 $*
+../available/comtohr

@@ -16,6 +16,18 @@
 # exists.
 # see /usr/share/doc/bash/examples/startup-files for examples.
 # the files are located in the bash-doc package.
+
+############################
+# Profile: Bash Aliases
+# Section
+############################
+# You may want to put all your additions into a separate directory like
+# ~/.bash_custom, instead of adding them here directly.
+########## Custom Bash Configurations.
+Default_Bash_Configurations="$HOME/.bash_custom/bash_conf"
+if [ -d $Default_Bash_Configurations ]; then
+########## Custom Bash Configurations. (BEGIN)
+
 	############################
 	# Profile: umask
 	# Section
@@ -31,7 +43,7 @@
 	########## if running bash
 		if [ -n "$BASH_VERSION" ]; then
 		    # include .bashrc if it exists
-			Default_Bashrc_file="$HOME/.bash_conf/bashrc"
+			Default_Bashrc_file="$Default_Bash_Configurations/bashrc"
 		    if [ -f $Default_Bashrc_file ]; then
 				. $Default_Bashrc_file
 		    fi
@@ -45,15 +57,15 @@
 	# ~/.bash_aliases, instead of adding them here directly.
 	# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 		########## Alias definitions.
-		Default_Bash_Configurations="$HOME/.bash_conf/enabled"
+		Default_Bash_Scripts="$Default_Bash_Configurations/enabled"
 		if [ -d $Default_Bash_Configurations ]; then
 			# Default Bash: Default Aliases
-			Default_Bash_Aliases="$Default_Bash_Configurations/bash_aliases"
+			Default_Bash_Aliases="$Default_Bash_Scripts/bash_aliases"
 			if [ -f $Default_Bash_Aliases ]; then
 			    . $Default_Bash_Aliases
 			fi
 			# Default Bash: OSX Specific Aliases
-			Default_Bash_OSX_Aliases="$Default_Bash_Configurations/osx"
+			Default_Bash_OSX_Aliases="$Default_Bash_Scripts/osx"
 			if [ -f $Default_Bash_OSX_Aliases ]; then
 			    . $Default_Bash_OSX_Aliases
 			fi
@@ -67,7 +79,7 @@
 	# ~/.bash_aliases, instead of adding them here directly.
 	# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 		########## Bash Library Definitions.
-		Default_Bash_Library="$HOME/.bash_conf/lib"
+		Default_Bash_Library="$Default_Bash_Configurations/lib"
 		if [ -d $Default_Bash_Library ]; then
 			# Default Bash: Functions
 			Default_Bash_Functions="$Default_Bash_Library/default.functions"
@@ -80,3 +92,8 @@
 			    . $Default_Bash_Error_Functions
 			fi
 		fi
+		
+else
+	echo "The directory $Default_Bash_Configurations does not exist."
+########## Custom Bash Configurations. (END)
+fi

@@ -1,4 +1,1 @@
-#!/bin/sh
-
-
-ssh-to wolfback.joyent.us $*
+../available/chris

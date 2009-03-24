@@ -11,7 +11,7 @@
 # Flag: Variables
 # Section
 ############################
-DEFAULT_FLAG_VARIABLES="$HOME/.bin/lib/script/_flags.variables"
+DEFAULT_FLAG_VARIABLES="$HOME/.bash_custom/bin/lib/script/_flags.variables"
 #### rsync - script variables
     if [ -f $DEFAULT_FLAG_VARIABLES ]; then
 		verbose.print "# Setting the script flag variables from '$DEFAULT_FLAG_VARIABLES'."
@@ -77,7 +77,7 @@ DEFAULT_FLAG_VARIABLES="$HOME/.bin/lib/script/_flags.variables"
 	# Script: FILENAME verification
 	# Section
 	############################
-	FILENAME_SCRIPT="$HOME/.bin/lib/script/_filename"
+	FILENAME_SCRIPT="$HOME/.bash_custom/bin/lib/script/_filename"
 	#### script - FILENAME
 	    if [ -f $FILENAME_SCRIPT ]; then
 			verbose.print "# Importing filename script from '$FILENAME_SCRIPT'."

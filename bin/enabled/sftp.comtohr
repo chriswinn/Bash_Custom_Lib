@@ -1,4 +1,1 @@
-#!/bin/sh
-
-
-sftp root@209.20.86.153 $*
+../available/sftp.comtohr

@@ -33,7 +33,7 @@
 		# Section
 		############################
 		# set PATH so it includes user's private, if directory exists.
-		Default_Bin_Folder="$HOME/.bin/enabled"
+		Default_Bin_Folder="$HOME/.bash_custom/bin/enabled"
 		if [ -d $Default_Bin_Folder ] ; then
 		    PATH=$Default_Bin_Folder:"${PATH}"
 		fi
@@ -43,7 +43,7 @@
 		# Section
 		############################
 		# Setting the 'bin' path for Metasploit, if directory exists.
-		Default_Metasploit_Bin_Folder="$HOME/.msf/enabled"
+		Default_Metasploit_Bin_Folder="$HOME/.bash_custom/msf/enabled"
 		if [ -d $Default_Metasploit_Bin_Folder ] ; then
 		    PATH=$Default_Metasploit_Bin_Folder:"${PATH}"
 		fi

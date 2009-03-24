@@ -23,7 +23,7 @@
 	# Update: Default Imports
 	# Section
 	############################
-	DEFAULT_RSYNC_IMPORTS="$HOME/.bin/lib/rsync/_rsync.import"
+	DEFAULT_RSYNC_IMPORTS="$HOME/.bash_custom/bin/lib/rsync/_rsync.import"
 	#### rsync - script settings
 	    if [ -f $DEFAULT_RSYNC_IMPORTS ]; then
 			verbose.print "# Importing rsync default settings from '$DEFAULT_RSYNC_IMPORTS'."
@@ -84,7 +84,7 @@
 		# Script: Default Command
 		# Section
 		############################
-		DEFAULT_SCRIPT_COMMAND="$HOME/.bin/lib/script/_command.default"
+		DEFAULT_SCRIPT_COMMAND="$HOME/.bash_custom/bin/lib/script/_command.default"
 		#### rsync - script settings
 		    if [ -f $DEFAULT_SCRIPT_COMMAND ]; then
 				verbose.print "# Importing rsync default settings from '$DEFAULT_SCRIPT_COMMAND'."

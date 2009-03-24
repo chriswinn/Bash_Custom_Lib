@@ -23,7 +23,7 @@
 	# Update: Default Imports
 	# Section
 	############################
-	DEFAULT_DECRYPTION_IMPORTS="$HOME/.bin/lib/cipher/_encryption.import"
+	DEFAULT_DECRYPTION_IMPORTS="$HOME/.bash_custom/bin/lib/cipher/_encryption.import"
 	#### rsync - script settings
 	    if [ -f $DEFAULT_DECRYPTION_IMPORTS ]; then
 			verbose.print "# Importing encryption settings from '$DEFAULT_DECRYPTION_IMPORTS'."
@@ -93,7 +93,7 @@
 	# Script: Default Command
 	# Section
 	############################
-	DEFAULT_SCRIPT_COMMAND="$HOME/.bin/lib/script/_command.default"
+	DEFAULT_SCRIPT_COMMAND="$HOME/.bash_custom/bin/lib/script/_command.default"
 	#### rsync - script settings
 	    if [ -f $DEFAULT_SCRIPT_COMMAND ]; then
 			verbose.print "# Importing default command from '$DEFAULT_SCRIPT_COMMAND'."
