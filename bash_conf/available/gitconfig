@@ -1,0 +1,7 @@
+[user]
+	name = Christopher L. Winn
+	email = christopher.winn@clearthinker.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
