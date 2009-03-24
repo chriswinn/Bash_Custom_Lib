@@ -1,0 +1,39 @@
+#!/bin/sh
+
+
+# need to temporarily set $RUNIT for this program to work without asking questions.
+RUNIT=yes
+export RUNIT
+echo "# need to temporarily set 'RUNIT' for this program to work without asking questions."
+echo "RUNIT=$RUNIT"
+
+
+	/bin/echo "######### Backing up local ~/Music directory to strongspace #####################" && \
+	  #scp -r ~/Music/* chriswinn@strongspace.com:music/ && \
+	  #rsync -Eavz --delete --force ~/Music/ chriswinn@chriswinn.strongspace.com:Music && \
+	#  backup Music
+	/bin/echo "######### Finished Backing up local ~/Music directory to strongspace ############" && \
+
+
+	/bin/echo "######### Backing up local ~/Documents directory to strongspace #################" && \
+	  #scp -r ~/Documents/* chriswinn@strongspace.com:Documents/ && \
+	  #rsync -Eavz --delete --force ~/Documents/ chriswinn@chriswinn.strongspace.com:Documents && \
+	  backup Documents
+	/bin/echo "######### Finished Backing up local ~/Documents directory to strongspace ########" && \
+
+
+	/bin/echo "######### Backing up local ~/Work directory to strongspace ######################" && \
+	  #scp -r ~/Work/* chriswinn@strongspace.com:Work/ && \
+	  #rsync -Eavz --exclude "_*" --delete --force ~/Work/ chriswinn@chriswinn.strongspace.com:Work && \
+	  backup Work
+	/bin/echo "######### Finished Backing up local ~/Work directory to strongspace #############"
+
+
+# setting $RUNIT back to empty
+RUNIT=yes
+export RUNIT
+echo
+echo "# setting RUNIT back to empty"
+echo "RUNIT=$RUNIT"
+echo
+echo "Done Backing Up Everything"

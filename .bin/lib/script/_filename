@@ -1,0 +1,41 @@
+############################
+#
+# FILENAME Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Script: FILENAME
+# Section
+############################
+if [ "$ENABLE_DEFAULT_FILENAME" = "YES" ]; then
+	verbose.print "# Gracefuly submits default if I don't explicitly select one."
+	verbose.print "# Defaulting to working with "$FILENAME" because no variable was passed from the command line."
+	FILENAME="$HOME/Documents"			
+fi
+if [ ! -n "$FILENAME" ]; then
+	verbose.print "# Gracefuly handles it if I don't explicitly format the command '-f <filename>'"
+	FILENAME="$HOME/$1"			
+fi
+	verbose.print "# Checks if '-f <filename>' was passed from the command line."
+	if [ -n "$FILENAME" ]; then
+		verbose.print "# The variable $FILENAME was passed from the command line."
+	    if [ -d $FILENAME ]; then
+			verbose.print "# Setting '$FILENAME' as the directory to work with."
+			DIRECTORY_VERIFIED=$FILENAME
+	    elif [ -f $FILENAME ]; then
+			verbose.print "# Setting '$FILENAME' as the file to work with."
+			FILENAME_VERIFIED=$FILENAME
+		else
+			verbose.print "# Cowardly refusing to work with something that doesn't exist."
+			echo
+			error.usage.filename
+	    fi
+	else
+		verbose.print "# Cowardly refusing to work with something that doesn't exist."
+		echo
+		error.usage.filename
+	fi

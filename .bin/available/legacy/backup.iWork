@@ -1,0 +1,14 @@
+#!/bin/sh
+
+
+/bin/echo "######### Backing up local ~/Documents directory to strongspace #################" && \
+  #scp -r ~/Documents/* chriswinn@strongspace.com:Documents/ && \
+  rsync -avz ~/Documents/ chriswinn@chriswinn.strongspace.com:Documents && \
+#  rsync -Eavz  ~/Library/'Application Support'/iWork/ chriswinn@chriswinn.strongspace.com:Documents/_MyCompanies/Clear Thinker\,\ Inc./Documents/Document\ Templates/iWork && \
+/bin/echo "######### Finished Backing up local ~/Documents directory to strongspace ########" 
+
+
+
+#~/Documents/_MyCompanies/Clear Thinker, Inc./Documents/Document Templates
+
+#/Users/chriswinn/Library/Application Support/iWork

@@ -1,0 +1,49 @@
+############################
+#
+# Rsync Defaults Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Script: Flags
+# Section
+############################
+DEFAULT_SCRIPT="$HOME/.bin/lib/script/_flags.filename"
+#### script - flags
+    if [ -f $DEFAULT_SCRIPT ]; then
+		verbose.print "# Setting the $SCRIPT_NAME flags from '$DEFAULT_SCRIPT'."
+		. $DEFAULT_SCRIPT
+	else
+		error.filenotfound $DEFAULT_SCRIPT
+    fi
+
+############################
+# Rsync: Options
+# Section
+############################
+DEFAULT_RSYNC_OPTIONS="$HOME/.bin/lib/rsync/_rsync.opts"
+#### rsync - options
+    if [ -f $DEFAULT_RSYNC_OPTIONS ]; then
+		verbose.print "# Setting the rsync options from '$DEFAULT_RSYNC_OPTIONS'."
+		. $DEFAULT_RSYNC_OPTIONS
+	else
+		error.filenotfound $DEFAULT_RSYNC_OPTIONS
+    fi
+
+############################
+# Rsync: Exclusions
+# Section
+############################
+DEFAULT_RSYNC_EXCLUDES="$HOME/.bin/lib/rsync/_rsync.exclusions"
+#### rsync - exclusions "$EXCLUDES"
+	# ignore Mac droppings
+    if [ -f $DEFAULT_RSYNC_EXCLUDES ]; then
+		verbose.print "# Setting the excluded files because '$DEFAULT_RSYNC_EXCLUDES' exists."
+		EXCLUDES=("--exclude-from=$DEFAULT_RSYNC_EXCLUDES")
+	else
+		error.print "# Skipping excluding anything because the file '$DEFAULT_RSYNC_EXCLUDES' doesn't exist."
+		EXCLUDES=				
+    fi

@@ -1,0 +1,154 @@
+############################
+#
+# Bash: Default Functions Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply enter some function(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+########################################################
+####################################################################################
+# Bash: Defining Default Functions
+# Section
+####################################################################################
+########################################################
+############################
+
+############################
+# Script: Default Name
+# Section
+############################
+# This Variable sets the name of the script.	
+# The script defaults to being named "script", 
+# unless you change it from the program calling this file.
+SCRIPT_NAME=BASH
+script_name.reset()
+{
+export SCRIPT_NAME=SCRIPT
+}
+export -f script_name.reset
+
+
+############################
+# Bash: Setting Up & Defining Verbose Functions
+# Section
+############################
+# Sets up the Verbose Functions.
+VERBOSE_MODE=YES
+verbose_mode.reset()
+{
+export VERBOSE_MODE=YES
+}
+export -f verbose_mode.reset
+
+# If Verbose Mode is on then,
+# print whatever is sent to this function
+verbose.print()
+{
+if [ "$VERBOSE_MODE" = YES ]; then
+	echo $1
+fi
+}
+export -f verbose.print
+
+
+############################
+# Bash: Force Non-Verbose Mode
+# Section
+############################
+# If this variable is set to anything other than "YES" then,
+# the program is forced into 'non-interactive mode'. (over rides "-v" verbose function)
+# "-q" quiet output
+FORCE_QUIET_MODE=NO
+quiet_mode.reset()
+{
+export FORCE_QUIET_MODE=NO
+}
+export -f quiet_mode.reset
+quiet_mode.on()
+{
+export FORCE_QUIET_MODE=YES
+export VERBOSE_MODE=NO
+}
+export -f quiet_mode.on
+
+
+############################
+# Bash: Setting Up & Defining Verbose Functions
+# Section
+############################
+# If Verbose Mode is on then,
+# print whatever is sent to this function
+NON_INTERACTIVE_MODE=NO
+noninteractive_mode.reset()
+{
+export NON_INTERACTIVE_MODE=NO
+}
+export -f noninteractive_mode.reset
+noninteractive_mode.on()
+{
+export NON_INTERACTIVE_MODE=YES
+}
+export -f noninteractive_mode.on
+
+
+############################
+# Script: Default Flags
+# Section
+############################
+# This Variable sets the flags interpreted by each custom script.	
+# The variables default = "DEFAULT" by changing it to:
+# 	"FILENAME", "PASSWORD", or "FILENAMEPASSWORD"
+# 	then you can pass files or passwords to scripts.
+SCRIPT_FLAGS=DEFAULT
+script_flags.reset()
+{
+export SCRIPT_FLAGS=DEFAULT	
+}
+export -f script_flags.reset
+
+
+############################
+# Bash: Setting Up & Defining Growl Notifications
+# Section
+############################
+# If Growl Notifications are on then,
+# print whatever is sent to this function
+GROWL_NOTIFICATIONS=NO
+GROWLPASSED_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/ok.jpg")
+GROWLPENDING_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/pending.jpg")
+GROWLFAILED_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/fail.jpg")
+growl.notification.reset()
+{
+export GROWL_NOTIFICATIONS=NO
+}
+export -f growl.notification.reset
+
+# Sets up the Verbose Functions.
+growl.notification()
+{
+if [ "$GROWL_NOTIFICATIONS" = YES ]; then
+	` growlnotify -m  $1 `
+fi  
+}
+export -f growl.notification
+
+
+############################
+# Script: Default Reset
+# Section
+############################
+default.reset()
+{
+script_name.reset
+verbose_mode.reset
+quiet_mode.reset
+noninteractive_mode.reset
+script_flags.reset
+growl.notification.reset
+}
+export -f default.reset
+
+

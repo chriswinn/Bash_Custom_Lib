@@ -1,0 +1,38 @@
+############################
+#
+# Default Flag Variables Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+################################################################################
+# Default: Growl Notification
+# Section
+################################################################################
+#Growl Stuff	
+	############################
+	# Bash: Setting Up & Defining Growl Notifications
+	# Section
+	############################
+	# If Growl Notifications are on then,
+	# print whatever is sent to this function
+	GROWL_NOTIFICATIONS=NO
+	GROWLPASSED_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/ok.jpg")
+	GROWLPENDING_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/pending.jpg")
+	GROWLFAILED_IMAGE=("--image $HOME/.bin/lib/growl/bob-the-builder/fail.jpg")
+	growl.notification.reset()
+	{
+	export GROWL_NOTIFICATIONS=NO
+	}
+	export -f growl.notification.reset
+
+	# Sets up the Verbose Functions.
+	growl.notification()
+	{
+	if [ "$GROWL_NOTIFICATIONS" = YES ]; then
+		` growlnotify -m  $1 `
+	fi  
+	}
+	export -f growl.notification

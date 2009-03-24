@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+/bin/echo "########################## downloading the website to the local host #############################" && \
+wget -r -l 0 $* && \
+
+/bin/echo "########################## Finished downloading the website to the local host #############################"
+
+
+
+
+

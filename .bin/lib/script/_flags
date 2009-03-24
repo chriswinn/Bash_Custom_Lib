@@ -1,0 +1,61 @@
+############################
+#
+# Flags Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Flag: Variables
+# Section
+############################
+DEFAULT_FLAG_VARIABLES="$HOME/.bin/lib/script/_flags.variables"
+#### rsync - script variables
+    if [ -f $DEFAULT_FLAG_VARIABLES ]; then
+		verbose.print "# Setting the script flag variables from '$DEFAULT_FLAG_VARIABLES'."
+		. $DEFAULT_FLAG_VARIABLES
+	else
+		error.filenotfound $DEFAULT_FLAG_VARIABLES
+    fi
+
+############################
+########## BEGIN: Flags
+############################
+	############################
+	# Default: Deals with command line flags as well as setting $FILENAME & $PASSWORD
+	# Section
+	############################
+	while getopts “vqngh” OPTION
+	do
+	     case $OPTION in
+	         v)
+	             VERBOSE_MODE='YES'
+	             ;;
+	         q)
+	             FORCE_QUIET_MODE='YES';
+	             VERBOSE_MODE='NO'
+	             ;;
+	         n)
+	             NON_INTERACTIVE_MODE='YES'
+	             ;;
+	         g)
+	             GROWL_NOTIFICATIONS='YES'
+	             ;;
+	         h)
+	             error.usage
+	             exit 1
+	             ;;
+	         ?)
+	             error.usage
+	             exit
+	             ;;
+	     esac
+	done
+	verbose.print "# I got past the while loop"
+
+############################
+########## END: Flags
+############################
+

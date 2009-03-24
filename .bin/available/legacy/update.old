@@ -1,0 +1,22 @@
+#!/bin/sh
+
+
+/bin/echo "######## Updating local ~/Music directory from strongspace ######################" && \
+  #scp -r chriswinn@strongspace.com:Music/ ~/* && \
+  rsync -avz chriswinn@chriswinn.strongspace.com:Music ~/ && \
+/bin/echo "######## Finished Updating local ~/Music directory from strongspace #############" && \
+
+
+/bin/echo "######## Updating local ~/Documents directory from strongspace ##################" && \
+  #scp -r chriswinn@strongspace.com:Documents/ ~/* && \
+  rsync -avz chriswinn@chriswinn.strongspace.com:Documents ~/ && \
+/bin/echo "######## Finished Updating local ~/Documents directory from strongspace #########" && \
+
+
+/bin/echo "######## Updating local ~/Work directory from strongspace #######################" && \
+  #scp -r chriswinn@strongspace.com:Work/ ~/* && \
+  rsync -avz --exclude "_*" chriswinn@chriswinn.strongspace.com:Work ~/ && \
+/bin/echo "######## Finished Updating local ~/Work directory from strongspace ##############"
+
+
+

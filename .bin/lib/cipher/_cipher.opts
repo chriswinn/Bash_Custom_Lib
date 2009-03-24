@@ -1,0 +1,18 @@
+############################
+#
+# Default Rsync Options Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Cipher: Options
+# Section
+############################
+#### cipher- options "$OPTS"
+	# Options to pass to cipher; edit as needed
+	#OPTS=("enc -aes-256-cbc -a -salt")
+	ENCRYPT_OPTS=("enc -aes-256-cbc -a -salt")
+	DECRYPT_OPTS=("enc -d -aes-256-cbc -a")

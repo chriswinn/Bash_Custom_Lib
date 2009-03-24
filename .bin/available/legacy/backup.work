@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+/bin/echo "######### Backing up local ~/Work directory to strongspace ######################" && \
+  #scp -r ~/Work/* chriswinn@strongspace.com:Work/ && \
+  rsync -Eavz --exclude "_*" ~/Work/ chriswinn@chriswinn.strongspace.com:Work && \
+/bin/echo "######### Finished Backing up local ~/Work directory to strongspace #############"
+
+

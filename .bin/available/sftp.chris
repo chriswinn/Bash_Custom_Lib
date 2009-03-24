@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+sftp-to wolfback.joyent.us $*

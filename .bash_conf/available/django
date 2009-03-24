@@ -1,0 +1,29 @@
+############################
+#
+# Django Setup
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Django: Setup
+# Section
+############################
+	############################
+	# Django: Python Path Setup
+	# Section
+	############################
+		########## Setting up the python path env variable for django 
+		export PYTHONPATH=$HOME/work/_MyCompanies/clearthinker.com/trunk/clearthinker:$PYTHONPATH
+		export PYTHONPATH=$HOME/work/websites/comtohr/trunk/comtohr:$PYTHONPATH
+
+	############################
+	# Django: Settings Env Variables
+	# Section
+	############################
+		########## Setting up the django settings env variables
+		export DJANGO_SETTINGS_MODULE=clearthinker.settings
+		export DJANGO_SETTINGS_MODULE=comtohr.settings
+

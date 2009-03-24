@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+/bin/echo "########################## Backing up local ~/Music directory to strongspace #############################" && \
+#scp -r ~/Music/* chriswinn@strongspace.com:music/ && \
+rsync -avz --delete --force ~/Music/*.mp3/ chriswinn@chriswinn.strongspace.com:music/*.mp3 && \
+
+/bin/echo "########################## Finished Backing up local ~/Music directory to strongspace #############################"
+
+
+
+

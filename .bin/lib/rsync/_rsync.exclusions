@@ -1,0 +1,17 @@
+############################
+#
+# Rsync Exclusions Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Rsync: Exclusions
+# Section
+############################
+# ignore Mac droppings
+exclude *.DS_Store 
+exclude *.localized
+exclude *.Trash

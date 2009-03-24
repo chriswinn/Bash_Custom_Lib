@@ -1,0 +1,32 @@
+
+- First you need to wrap growlnotify in a script that uses the network version
+
+  sudo mv /usr/local/bin/growlnotify /usr/local/bin/growlnotify.wrapped
+  sudo touch /usr/local/bin/growlnotify
+  sudo chmod a+x /usr/local/bin/growlnotify
+  sudo nano /usr/local/bin/growlnotify
+  
+  and paste in this:
+    
+    #!/bin/bash
+    # growlnotify leopard bug workaround
+    list_args()
+    {
+        for p in "$@"
+        do
+            if [ "${p:0:1}" == "-" ];then
+                echo -n "$p "
+            else
+                echo -n "\"$p\" "
+            fi
+        done
+    }
+    argstr=$(list_args "${@:$?}")
+    echo "-H localhost $argstr" | xargs /usr/local/bin/growlnotify.wrapped
+      
+- Open System Preferences > Growl > Network
+  Tick the 'Listen for incoming Notifications'
+
+- Finally, install the autotest hook:
+
+    ln -s <THIS DIR>/growl.rb ~/.autotest

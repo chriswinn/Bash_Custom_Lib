@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+/bin/echo "######## Updating local ~/Music directory from strongspace ######################" && \
+  #scp -r chriswinn@strongspace.com:Music/ ~/* && \
+  rsync -avz chriswinn@chriswinn.strongspace.com:Music ~/ && \
+/bin/echo "######## Finished Updating local ~/Music directory from strongspace #############" 
+
+

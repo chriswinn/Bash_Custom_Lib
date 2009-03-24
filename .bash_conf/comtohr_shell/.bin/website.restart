@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "stopping memcached"
+/etc/init.d/memcached stop
+
+echo "stopping nginx"
+/etc/init.d/nginx stop
+
+echo "restarting apache"
+apache2ctl restart     
+
+echo "starting nginx"
+/etc/init.d/nginx start
+
+echo "starting memcached"
+/etc/init.d/memcached start 

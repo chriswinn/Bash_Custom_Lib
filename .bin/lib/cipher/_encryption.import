@@ -1,0 +1,47 @@
+############################
+#
+# Cipher Defaults Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Cipher: Variables
+# Section
+############################
+DEFAULT_CIPHER_VARIABLES="$HOME/.bin/lib/cipher/_cipher.variables"
+#### rsync - script variables
+    if [ -f $DEFAULT_CIPHER_VARIABLES ]; then
+		verbose.print "# Setting the $SCRIPT_NAME variables from '$DEFAULT_CIPHER_VARIABLES'."
+		. $DEFAULT_CIPHER_VARIABLES
+	else
+		error.filenot.found $DEFAULT_CIPHER_VARIABLES
+    fi
+
+############################
+# Script: Flags
+# Section
+############################
+DEFAULT_SCRIPT="$HOME/.bin/lib/script/_flags.filenamepassword"
+#### script - flags
+    if [ -f $DEFAULT_SCRIPT ]; then
+		verbose.print "# Setting the $SCRIPT_NAME flags from '$DEFAULT_SCRIPT'."
+		. $DEFAULT_SCRIPT
+	else
+		error.filenot.found $DEFAULT_SCRIPT
+    fi
+
+############################
+# Cipher: Options
+# Section
+############################
+DEFAULT_CIPHER_OPTIONS="$HOME/.bin/lib/cipher/_cipher.opts"
+#### rsync - options
+    if [ -f $DEFAULT_CIPHER_OPTIONS ]; then
+		verbose.print "# Setting the $SCRIPT_NAME options from '$DEFAULT_CIPHER_OPTIONS'."
+		. $DEFAULT_CIPHER_OPTIONS
+	else
+		error.filenot.found $DEFAULT_CIPHER_OPTIONS
+    fi

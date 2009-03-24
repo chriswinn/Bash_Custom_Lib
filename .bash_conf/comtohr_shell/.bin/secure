@@ -1,0 +1,3 @@
+echo -n "password" | hdiutil create -encryption -stdinpass -srcfolder private encrypted.dmg
+
+echo -n "password" | hdiutil attach -stdinpass encrypted.dmg

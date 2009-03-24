@@ -1,0 +1,47 @@
+############################
+#
+# Flags Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Script: Command
+# Section
+############################
+# Informative output
+growl.notification "Announcing $SCRIPT_NAME Beginning"
+echo
+echo About to run:
+echo "${COMMAND[*]}"
+echo 'Please do not close this window until it is finished.'
+	if [ "$NON_INTERACTIVE_MODE" = "YES" ]; then
+		echo "Running in non-interactive mode."
+		$COMMAND
+	else
+		growl.notification "Waiting on you to decide!" $GROWLPENDING_IMAGE --sticky
+		echo
+		read -p "Do you want to run the command (yes/no)? " RUNIT
+		#Input integrity checking
+		#...rest of script...
+		if [ "$RUNIT" = "yes" ]
+		then 
+			# DO IT!
+			growl.notification  "$SCRIPT_NAME $FILENAME"
+			$COMMAND
+		else
+			echo "Skipping actually running the program."
+		fi
+	fi
+echo
+echo Done.
+growl.notification  "$SCRIPT_NAME of $FILENAME COMPLETED" $GROWLPASSED_IMAGE
+
+
+############################
+# Script: Verification
+# Section
+############################
+default.reset

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+ssh-to restoration@cardero.textdrive.com $*

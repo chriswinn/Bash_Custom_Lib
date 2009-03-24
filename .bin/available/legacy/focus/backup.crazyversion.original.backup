@@ -1,0 +1,142 @@
+#! /bin/bash
+
+##############################################################################
+#
+# Backup Script
+# Coded by semaja2
+# Version 2.0d
+#To use this backup script simply fill in the variable below
+#If you want to disable certain features read the website on how to change it
+#
+###############################################################################
+#
+#Variables
+#
+###############################################################################
+#This Variable set the name of the backup
+BACKUPNAME="Documents Backup"
+#These variables set the details for the GROWLNOTIFY tool
+GROWLHOST=localhost
+GROWLPASS=
+#These variables set the names of the files created, do not modify the extensions
+NAMET=~/documents-$(date +%d%m%Y).tar.gz
+NAMEE=~/documents-$(date +%d%m%Y).aes
+#This variable sets the directory to backup
+DIRBACKUP=~/Documents/
+#This variable sets the password to use as the encryption key
+ENCRYPTPASS=
+#This variable tells the script if you want to remove the copy of the backup located in your profile
+REMOVETEMPE=YES
+################################################################################
+#FTP Backup
+#Section
+################################################################################
+#This variable tells the script if you want to use FTP to backup
+ENABLEFTP=YES
+#These variables set the account details to use for ftp backup
+FTPSITE=
+FTPUSER=
+FTPPASS=
+#This variable sets the location on where to upload the backup to
+FTPBACKUPDIR=/backups/schoolwork.aes
+################################################################################
+#Samba Backup
+#Section
+################################################################################
+#This variable tells the script if you want use a samaba server to backup
+ENABLESMB=YES
+#These variables set the account details to use for samba backup
+SMBSERVER=
+SMBUSER=
+#This variable sets the share name that you wish to backup to, use this format //ACCOUNT@SERVER/SHARENAME
+SMBSHARE=
+#This variable sets the mount location
+SMBBACKUPDIR=/Volumes/backupdrive/
+#################################################################################
+#Backup Drive
+#Section
+#################################################################################
+#This variable will tell the script if you want to backup to another harddrive or partiton
+ENABLEHDD=YES
+#This variable sets the location of the mounted drive you wish to backup to
+HDDMOUNT=/Volumes/DISK3
+#################################################################################
+#iDisk 
+#Section
+#################################################################################
+#This variable will tell the script if you want to backup to a iDisk
+ENABLEIDISK=YES
+
+################################################################################
+#The backup script
+#
+#
+#Do not modify below this line unless you know what you are doing
+#
+#
+#################################################################################
+echo "Annoucing Backup"
+growlnotify -m "$BACKUPNAME Started" -t "Backup" -s -P $GROWLPASS --udp --host $GROWLHOST
+
+#Archives the files
+echo "archiving files"
+growlnotify -m "Archiving $BACKUPNAME" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+tar -czf $NAMET $DIRBACKUP
+
+#Encrypts the archive
+echo "encrypting files"
+growlnotify -m "Encrypting $BACKUPNAME" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+openssl enc -e -a -salt -aes-256-cbc -in $NAMET -out $NAMEE -k $ENCRYPTPASS
+
+if [ "$ENABLEFTP" = "YES" ]; then
+#uploads enypted archive to the ftp
+growlnotify -m "Uploading $BACKUPNAME to FTP" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+echo "uploading to ftp"
+ftp -n <<EOF
+open $FTPSITE
+user $FTPUSER $FTPPASS
+put $NAMEE $FTPBACKUPDIR
+bye
+EOF
+fi
+
+if [ "$ENABLESMB" = "YES" ]; then
+#mounts the backup drive
+echo "Mounting backupdrive"
+growlnotify -m "Mounting Backup Drive" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+mount_smbfs -I $SMBSERVER -U $SMBUSER $SMBSHARE $SMBBACKUPDIR
+
+#uploads enypted archive to the server
+echo "Uploading archive to server"
+growlnotify -m "Copying to Backup Drive" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+cp $NAMEE $SMBBACKUPDIR
+
+#unmounts the backupdrive
+echo "unmounting backupdrive"
+growlnotify -m "Unmounting backupdrive" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+umount $SMBBACKUPDIR
+fi
+
+if [ "$ENABLEHDD" = "YES" ]; then
+#copies encrypted archive to the drive 
+echo "Copying archive to drive "
+growlnotify -m "Copying to Backup Drive" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+cp $NAMEE $HDDMOUNT
+fi
+
+if [ "$ENABLEIDISK" = "YES" ]; then
+#Uploads encrypted archive to your iDisk 
+echo "Copying archive to iDisk "
+growlnotify -m "Copying to iDisk" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+cp $NAMEE /Volumes/iDisk
+fi
+
+#removes archive
+echo "removing archives"
+growlnotify -m "Removing Files used" -t "Backup" -P $GROWLPASS --udp --host $GROWLHOST
+rm $NAMET
+if [ "$REMOVETEMPE" = "YES" ]; then
+rm $NAMEE
+fi
+
+growlnotify -m "$BACKUPNAME COMPLETED" -t "Backup" -s -P $GROWLPASS --udp --host $GROWLHOST

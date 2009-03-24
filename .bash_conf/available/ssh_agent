@@ -1,0 +1,54 @@
+############################
+#
+# SSH: SSH Agent Setup
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# SSH: Agent
+# Section
+############################
+# Start: Setting up the ssh agent on each login
+	############################
+	# SSH Agent: Setup Environment Variable
+	# Section
+	############################
+	# Start: Setting up the ssh agent on each login
+		SSH_ENV="$HOME/.ssh/environment"
+
+	############################
+	# SSH Agent: "start_agent" function Setup
+	# Section
+	############################
+	# Setup SSH start_agent function
+		function start_agent {
+		     echo "Initialising new SSH agent..."
+		     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+		     echo succeeded
+		     chmod 600 "${SSH_ENV}"
+		     . "${SSH_ENV}" > /dev/null
+		     /usr/bin/ssh-add;
+		}
+
+	############################
+	# SSH Agent: Start Process
+	# Section
+	############################
+	# Source SSH settings, if applicable
+		# If SSH environment exists,
+		# process it and then start the agent
+		if [ -f "${SSH_ENV}" ]; then
+		     . "${SSH_ENV}" > /dev/null
+		     #ps ${SSH_AGENT_PID} doesnt work under cywgin
+		     ps -e | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+		        start_agent;
+		     }
+		else
+		# If the SSH environment doesn't exist
+		# Just start the agent without it.
+		     start_agent;
+		fi 
+

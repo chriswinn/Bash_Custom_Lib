@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+/bin/echo "######## Updating local ~/Documents directory from strongspace ##################" && \
+  #scp -r chriswinn@strongspace.com:Documents/ ~/* && \
+  rsync -avz chriswinn@chriswinn.strongspace.com:Documents ~/ && \
+/bin/echo "######## Finished Updating local ~/Documents directory from strongspace #########" 
+
+
+#/Users/chriswinn/Library/Application Support/iWork

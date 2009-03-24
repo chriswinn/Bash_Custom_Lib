@@ -1,0 +1,62 @@
+############################
+#
+# OSX Specific Setup
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# OSX: Setup
+# Section
+############################
+# Adding an environment variable to let me know I'm selecting the OSX bash config
+# VARNAME=value_of_variable;export VARNAME
+	############################
+	# OSX: MacPorts Setup
+	# Section
+	############################
+	# MacPorts section: adding an appropriate PATH variable for use with MacPorts.
+		# Setting the 'bin' path for MacPorts, if directory exists.
+		Default_Macport_BIN_Folder="/opt/local/bin"
+		if [ -d $Default_Macport_BIN_Folder ] ; then
+		    export PATH=$Default_Macport_BIN_Folder:$PATH
+		fi
+
+		# Setting the 'sbin' path for MacPorts, if directory exists.
+		Default_Macport_SBIN_Folder="/opt/local/sbin"
+		if [ -d $Default_Macport_SBIN_Folder ] ; then
+		    export PATH=$Default_Macport_SBIN_Folder:$PATH
+		fi
+
+		# Setting the 'man' path for MacPorts, if directory exists.
+		Default_Macport_MANPATH_Folder="/opt/local/share/man"
+		if [ -d $Default_Macport_MANPATH_Folder ] ; then
+		    export MANPATH=$Default_Macport_MANPATH_Folder:$MANPATH
+		fi
+
+	############################
+	# OSX: MySQL Setup
+	# Section
+	############################
+	# MySQL section: adding an appropriate PATH variable for use with MySQL.
+		##########
+		# Setting the 'bin' path for MySQL, if directory exists.
+		Default_MySQL_BIN_Folder="/usr/local/mysql/bin"
+		if [ -d $Default_MySQL_BIN_Folder ] ; then
+		    PATH=$Default_MySQL_BIN_Folder:"${PATH}"
+		fi
+
+	############################
+	# OSX: Postgres Setup
+	# Section
+	############################
+	# Postgres section: adding an appropriate PATH variable for use with Postgres.
+		##########
+		# Setting the 'bin' path for Postgres, if directory exists.
+		Default_Postgres_BIN_Folder="/opt/local/lib/postgresql81/bin"
+		if [ -d $Default_Postgres_BIN_Folder ] ; then
+		    PATH=$Default_Postgres_BIN_Folder:"${PATH}"
+		fi
+

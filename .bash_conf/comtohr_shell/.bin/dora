@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+ssh-to chriswinn@entebee.joyent.us $*

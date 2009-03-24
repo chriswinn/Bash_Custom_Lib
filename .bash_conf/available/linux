@@ -1,0 +1,27 @@
+############################
+#
+# Linux Specific Setup
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Linux: Setup
+# Section
+############################
+# Adding an environment variable to let me know I'm selecting the LINUX bash config
+# VARNAME=value_of_variable;export VARNAME
+	############################
+	# Linux: Postgres Setup
+	# Section
+	############################
+	# Postgres section: adding an appropriate PATH variable for use with Postgres.
+		##########
+		# Setting the 'bin' path for Postgres, if directory exists. (Ubuntu's location)
+		Default_Postgres_BIN_Folder="/usr/lib/postgresql/8.3/bin"
+		if [ -d $Default_Postgres_BIN_Folder ] ; then
+		    PATH=$Default_Postgres_BIN_Folder:"${PATH}"
+		fi
+

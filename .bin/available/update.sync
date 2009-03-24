@@ -1,0 +1,99 @@
+#!/bin/bash
+
+
+############################
+#
+# Update Script
+# Coded by chriswinn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+########## BEGIN: setting up Update
+############################
+	############################
+	# Update: Default Update Variables
+	# Section
+	############################
+	SCRIPT_NAME=Update
+
+	############################
+	# Update: Default Imports
+	# Section
+	############################
+	DEFAULT_RSYNC_IMPORTS="$HOME/.bin/lib/rsync/_rsync.import"
+	#### rsync - script settings
+	    if [ -f $DEFAULT_RSYNC_IMPORTS ]; then
+			verbose.print "# Importing rsync default settings from '$DEFAULT_RSYNC_IMPORTS'."
+			. $DEFAULT_RSYNC_IMPORTS
+		else
+			error.filenotfound $DEFAULT_RSYNC_IMPORTS
+	    fi
+
+############################
+########## END: setting up Update
+############################
+
+
+############################
+########## BEGIN: Update
+############################
+	############################
+	# Update: Source & Destination
+	# Section
+	############################
+	#### Update - source "$UPDATESOURCE"
+	#### Update - destination "$UPDATEDEST"
+		############################
+		# Space-separated list of directories to back up; edit as needed; SOURCE
+		# DIRS=("[EMAIL PROTECTED]:/Volumes/Christine/Complete Rug Image Archive/Misc" "[EMAIL PROTECTED]:/Volumes/Christine/Other Source")
+		# If you wish to back up to a server via ssh, change the line to something like
+		############################
+		# UPDATEDEST="[EMAIL PROTECTED]:/path/to/backup/destination"
+		#UPDATEDEST=("/Volumes/Paris/Complete Rug Image Archive/Layered Rooms/")
+			############################
+			# FILENAME & DIRECTORY: Check
+			# Section
+			############################
+			if [ ! -z $DIRECTORY_VERIFIED ]; then
+				#This variable sets the DIRECTORY to update from
+				UPDATESOURCE=("chriswinn@chriswinn.strongspace.com:$DIRECTORY_VERIFIED/")
+				#This variable sets the DIRECTORY to update from
+				UPDATEDEST=("$HOME/$DIRECTORY_VERIFIED")
+			#elif [ ! -z $FILENAME_VERIFIED ]; then
+				#This variable sets the FILE to update from
+				#UPDATESOURCE=("chriswinn@chriswinn.strongspace.com:$FILENAME_VERIFIED")
+				#This variable sets the FILE to update from
+				#UPDATEDEST=("$HOME/$FILENAME_VERIFIED")
+			fi
+
+	############################
+	# Update: Actual Command
+	# Section
+	############################
+	#### rsync - actual command
+		# Build the actual command
+		# NOTE the specific path to the "special" version of rsync
+		# rsync -avz chriswinn@chriswinn.strongspace.com:Documents ~/ && \
+		#COMMAND=("/usr/bin/rsync $OPTS $EXCLUDES $UPDATESOURCE $UPDATEDEST")
+		COMMAND=("rsync $UPDATE_OPTS $EXCLUDES $UPDATESOURCE $UPDATEDEST")
+
+		############################
+		# Script: Default Command
+		# Section
+		############################
+		DEFAULT_SCRIPT_COMMAND="$HOME/.bin/lib/script/_command.default"
+		#### rsync - script settings
+		    if [ -f $DEFAULT_SCRIPT_COMMAND ]; then
+				verbose.print "# Importing rsync default settings from '$DEFAULT_SCRIPT_COMMAND'."
+				. $DEFAULT_SCRIPT_COMMAND
+			else
+				error.filenotfound $DEFAULT_SCRIPT_COMMAND
+		    fi
+		# the end.
+
+############################
+########## END: Update
+############################

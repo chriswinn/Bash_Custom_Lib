@@ -1,0 +1,32 @@
+############################
+#
+# Default Encryption Variables Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+########## BEGIN: Variables
+############################
+	############################
+	# Default: Remove Encrypted File
+	# Section
+	############################
+	# If this variable is set to anything other than "YES" then,
+	#T his variable tells the script if you want to remove the copy of the unencrypted archive located in your profile
+	#REMOVEUNENCRYPTEDARCHIVE=YES
+	REMOVEUNENCRYPTEDARCHIVE=NO
+
+	############################
+	# Default: Remove Encrypted File
+	# Section
+	############################
+	# If this variable is set to anything other than "YES" then,
+	#This variable tells the script you want to remove the encrypted archive located in your profile
+	REMOVEENCRYPTED=NO
+
+############################
+########## END: Variables
+############################

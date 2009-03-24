@@ -1,0 +1,169 @@
+############################
+#
+# Error Functions Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply enter some function(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+########################################################
+####################################################################################
+# Bash: Defining Error Functions
+# Section
+####################################################################################
+########################################################
+############################
+
+############################
+# Error: Print Error Message Function
+# Section
+############################
+# Print whatever is sent to this error
+error.print()
+{
+echo $1
+#exit 1
+}
+export -f error.print
+
+
+############################
+# Error: Print Filenam not found Error Message Function
+# Section
+############################
+# Print whatever filename is sent to this error
+error.filenotfound()
+{
+cat << EOF
+This program encountered the following error.
+
+The file '$1' does not exist.
+
+EOF
+#exit 1
+}
+export -f error.filenotfound
+
+
+############################
+# Error: Print Filenam not found Error Message Function
+# Section
+############################
+# Print whatever filename is sent to this error
+error.directorynotfound()
+{
+cat << EOF
+This program encountered the following error.
+
+The directory '$1' does not exist.
+
+EOF
+#exit 1
+}
+export -f error.directorynotfound
+
+############################
+# Error: Script Usage Function
+# Section
+############################
+# Default script usage error functions
+error.usage()
+{
+cat << EOF
+usage: $0 options
+
+This is a $SCRIPT_NAME script.
+
+OPTIONS:
+    -v      Verbose
+    -q      Forces Quiet Operation
+    -n      Non-Interactive Mode
+    -g      Turns on Growl Notifications.
+    -h      Show this message
+
+EOF
+#THIS ONE is the error.usage function.
+#exit 1
+}
+export -f error.usage
+
+############################
+# Error: Script Usage Requires "FILENAME" Function
+# Section
+############################
+# Default script usage error function
+error.usage.filename()
+{
+cat << EOF
+usage: $0 options
+
+This is a $SCRIPT_NAME script.
+
+OPTIONS:
+    -v      Verbose
+    -q      Forces Quiet Operation
+    -n      Non-Interactive Mode
+    -g      Turns on Growl Notifications.
+    -h      Show this message
+    -f      [filename or directory]
+
+EOF
+#THIS ONE is the error.usage.filename function.
+#exit 1
+}
+export -f error.usage.filename
+
+############################
+# Error: Script Usage Requires "PASSWORD" Function
+# Section
+############################
+# Default script usage error function
+error.usage.password()
+{
+cat << EOF
+usage: $0 options
+
+This is a $SCRIPT_NAME script.
+
+OPTIONS:
+    -v      Verbose
+    -q      Forces Quiet Operation
+    -n      Non-Interactive Mode
+    -g      Turns on Growl Notifications.
+    -h      Show this message
+    -k      [password]
+
+EOF
+#THIS ONE is the error.usage.password function.
+#exit 1
+}
+export -f error.usage.password
+
+############################
+# Error: Script Usage Requires "FILENAME" & "PASSWORD" Function
+# Section
+############################
+# Default script usage error function
+error.usage.filenamepassword()
+{
+cat << EOF
+usage: $0 options
+
+This is a $SCRIPT_NAME script.
+
+OPTIONS:
+    -v      Verbose
+    -q      Forces Quiet Operation
+    -n      Non-Interactive Mode
+    -g      Turns on Growl Notifications.
+    -h      Show this message
+    -f      [filename or directory]
+    -k      [password]
+
+EOF
+#THIS ONE is the error.usage.filenamepassword function.
+#exit 1
+}
+export -f error.usage.filenamepassword

@@ -1,0 +1,30 @@
+############################
+#
+# Default Rsync Options Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Rsync: Options
+# Section
+############################
+#### rsync - options "$OPTS"
+	# Options to pass to rsync; edit as needed
+	# "--update" = update only (don't overwrite newer versions of files)
+	# "--delete"= delete files that exist on DESTINATION BUT NOT SOURCE" 
+	#OPTS=("-Eavz --delete-excluded")
+	UPDATE_OPTS=("-avz --update")
+
+############################
+# Rsync: Options
+# Section
+############################
+#### rsync - options "$OPTS"
+	# Options to pass to rsync; edit as needed
+	# "--update" = update only (don't overwrite newer versions of files)
+	# "--delete"= delete files that exist on DESTINATION BUT NOT SOURCE" 
+	#OPTS=("-Eavz --delete --delete-excluded --force")
+	DELETE_OPTS=("-avz --delete --delete-excluded --force")
