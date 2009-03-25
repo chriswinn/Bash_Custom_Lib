@@ -16,8 +16,10 @@ growl.notification "Announcing $SCRIPT_NAME Beginning"
 echo
 echo About to run:
 echo "${COMMAND[*]}"
+echo
 echo 'Please do not close this window until it is finished.'
 	if [ "$NON_INTERACTIVE_MODE" = "YES" ]; then
+		echo
 		echo "Running in non-interactive mode."
 		$COMMAND
 	else
