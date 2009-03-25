@@ -21,7 +21,7 @@ echo 'Please do not close this window until it is finished.'
 		echo "Running in non-interactive mode."
 		$COMMAND
 	else
-		growl.notification "Waiting on you to decide!" $GROWLPENDING_IMAGE --sticky
+		growl.notification "Waiting on you to decide! $GROWLPENDING_IMAGE --sticky"
 		echo
 		read -p "Do you want to run the command (yes/no)? " RUNIT
 		#Input integrity checking
@@ -37,7 +37,7 @@ echo 'Please do not close this window until it is finished.'
 	fi
 echo
 echo Done.
-growl.notification  "$SCRIPT_NAME of $FILENAME COMPLETED" $GROWLPASSED_IMAGE
+growl.notification  "$SCRIPT_NAME of $FILENAME COMPLETED." $GROWLPASSED_IMAGE
 
 
 ############################

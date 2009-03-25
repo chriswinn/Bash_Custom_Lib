@@ -16,12 +16,14 @@
 	# Bash: Setting Up & Defining Growl Notifications
 	# Section
 	############################
+	# Turns Growl Notifications ON/OFF
+	export GROWL_NOTIFICATIONS=NO
 	# If Growl Notifications are on then,
 	# print whatever is sent to this function
-	GROWL_NOTIFICATIONS=NO
-	GROWLPASSED_IMAGE=("--image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/ok.jpg")
-	GROWLPENDING_IMAGE=("--image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/pending.jpg")
-	GROWLFAILED_IMAGE=("--image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/fail.jpg")
+	export GROWLPASSED_IMAGE=(" --image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/ok.jpg")
+	export GROWLPENDING_IMAGE=(" --image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/pending.jpg")
+	export GROWLFAILED_IMAGE=(" --image $HOME/.bash_custom/bin/lib/growl/bob-the-builder/fail.jpg")
+
 	growl.notification.reset()
 	{
 	export GROWL_NOTIFICATIONS=NO
@@ -32,7 +34,7 @@
 	growl.notification()
 	{
 	if [ "$GROWL_NOTIFICATIONS" = YES ]; then
-		` growlnotify -m  $1 `
+		growlnotify -m  $1 $2 $3
 	fi  
 	}
 	export -f growl.notification
