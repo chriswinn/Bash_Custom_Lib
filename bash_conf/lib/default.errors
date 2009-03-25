@@ -24,7 +24,8 @@
 error.print()
 {
 echo $1
-#exit 1
+growl.notification  "$SCRIPT_NAME FAILED. $GROWLFAILED_IMAGE"
+exit 1
 }
 export -f error.print
 
@@ -42,13 +43,14 @@ This program encountered the following error.
 The file '$1' does not exist.
 
 EOF
-#exit 1
+growl.notification  "$SCRIPT_NAME FAILED. $GROWLFAILED_IMAGE"
+exit 1
 }
 export -f error.filenotfound
 
 
 ############################
-# Error: Print Filenam not found Error Message Function
+# Error: Print Directory not found Error Message Function
 # Section
 ############################
 # Print whatever filename is sent to this error
@@ -60,7 +62,8 @@ This program encountered the following error.
 The directory '$1' does not exist.
 
 EOF
-#exit 1
+growl.notification  "$SCRIPT_NAME FAILED. $GROWLFAILED_IMAGE"
+exit 1
 }
 export -f error.directorynotfound
 
@@ -85,7 +88,8 @@ OPTIONS:
 
 EOF
 #THIS ONE is the error.usage function.
-#exit 1
+growl.notification  "$SCRIPT_NAME FAILED. $GROWLFAILED_IMAGE"
+exit 1
 }
 export -f error.usage
 
@@ -111,7 +115,8 @@ OPTIONS:
 
 EOF
 #THIS ONE is the error.usage.filename function.
-#exit 1
+growl.notification  "$SCRIPT_NAME FAILED. $GROWLFAILED_IMAGE"
+exit 1
 }
 export -f error.usage.filename
 
@@ -137,7 +142,8 @@ OPTIONS:
 
 EOF
 #THIS ONE is the error.usage.password function.
-#exit 1
+growl.notification  "$SCRIPT_NAME FAILED. $GROWLFAILED_IMAGE"
+exit 1
 }
 export -f error.usage.password
 
@@ -164,6 +170,7 @@ OPTIONS:
 
 EOF
 #THIS ONE is the error.usage.filenamepassword function.
-#exit 1
+growl.notification  "$SCRIPT_NAME FAILED. $GROWLFAILED_IMAGE"
+exit 1
 }
 export -f error.usage.filenamepassword
