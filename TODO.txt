@@ -1,0 +1,4 @@
+Rewrite in Python
+Rewrite in Ruby
+Define workable patterns for this application
+Refactor to patterns

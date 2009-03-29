@@ -1,2 +1,10 @@
+# 1. Split out various tasks into separate programs which can be shared between each other in any order.
+	a. look through legacy programs, and dev programs.
+
+# 2. Revise name of "upload.sync"
 backup --> upload ?!
 grab --> download ?!
+
+# 3. Look for ways to refactor the programs and allow for more easy extensibility.
+
+
