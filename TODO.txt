@@ -2,3 +2,4 @@ Rewrite in Python
 Rewrite in Ruby
 Define workable patterns for this application
 Refactor to patterns
+Need to do some refactoring as some things are hard wired & I'd like to automatically check OS/programs available and act accordingly.
