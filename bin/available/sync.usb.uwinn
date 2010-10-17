@@ -1,0 +1,9 @@
+#!/bin/sh
+echo "Beginning to update the USB Drive 'UWINN'"
+echo
+rsync -avz --delete-before --force --progress /Users/chriswinn/SyncUSB/ /Volumes/UWINN/ && \
+/bin/echo "######## Finished Updating UWINN usb drive from /Users/chriswinn/SyncUSB/ #########" && \
+echo
+echo
+echo "Finished updating the USB Drive 'UWINN'"
+

@@ -1,0 +1,99 @@
+############################
+#
+# Sync Defaults Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Sync: Genre Definition
+# Section
+############################
+# "Acapella" "Breaks" "Chill Out" "EDM" "House" "House - Acid" "House - Deep" "House - Disco" "House - Electro" "House - Fidget" "House - Funky" "House - Tech" "House - Tribal" "Minimal" "Progressive" "Techno" "Trance"
+levels=( Early "Early_Mid" Mid "Mid_Peak" Peak)
+genres=( Acapella Breaks 'Chill_Out' EDM House 'House_Acid' 'House_Deep' 'House_Disco' 'House_Electro' 'House_Fidget' 'House_Funky' 'House_Tech' 'House_Tribal' Minimal Progressive Techno Trance )
+
+
+############################
+# Script: Clearing Sorted
+# Section
+############################
+#echo "############################"
+#echo "Clearing out the old stuff."
+#echo "############################"
+#for level in ${levels[@]}
+#do
+#	ENERGY_LEVELS="$SYNC_FOLDER/Music_Library/$level"
+#	if [ -d $ENERGY_LEVELS ]; then
+#		echo "$ENERGY_LEVELS"
+#		for genre in ${genres[@]}
+#		do
+#			rm $ENERGY_LEVELS/$genre
+#		done
+#	else
+#		error.filenotfound $ENERGY_LEVELS
+#	fi		
+#done
+#echo
+
+echo "############################"
+echo "Sorting the files into Levels & Genres."
+echo "############################"
+for level in ${levels[@]}
+do
+	ENERGY_LEVELS="$SYNC_FOLDER/Music_Library/$level"
+	if [ -d $ENERGY_LEVELS ]; then
+		echo "$ENERGY_LEVELS"
+		for genre in ${genres[@]}
+		do
+			GENRE_DIRECTORY="$ENERGY_LEVELS/$genre"
+			echo $GENRE_DIRECTORY
+			############################
+			if [ ! -d $GENRE_DIRECTORY ]; then
+				mkdir $GENRE_DIRECTORY
+			fi
+
+			############################
+			#ls $ENERGY_LEVELS/*"$genre".mp3
+			for myfile in $ENERGY_LEVELS/*$genre.mp3
+			do
+				
+				if [ -f "$myfile" ]; then
+				#	echo "$myfile"
+				#	ls "$ENERGY_LEVELS"/*"$genre".mp3
+					id3v2 -l "$myfile"
+					#mv "$myfile" $GENRE_DIRECTORY
+				fi
+			done
+
+			############################
+			if [ "$(ls -A $GENRE_DIRECTORY)" ]; then
+				echo "Directory is not empty."
+			else
+				rm -r $GENRE_DIRECTORY
+			fi
+		done
+		echo
+	else
+		error.filenotfound $ENERGY_LEVELS
+	fi		
+done
+echo
+
+############################
+# Rsync: Sorting
+# Section
+############################
+#### script - flags
+#    if [ -f $PATH_TO_FOLDER ]; then
+#		verbose.print "# Setting the $SCRIPT_NAME flags from '$PATH_TO_EARLY_FOLDER'."
+#		. $PATH_TO_EARLY_FOLDER
+#	else
+#		error.filenotfound $DEFAULT_SCRIPT
+#    fi
+
+
+#mv $SYNC_FOLDER/Music_Library/Early/*.- Minimal* $HOME/SyncUSB/Music_Library/Early/Minimal
+#echo "Sorting the files based on comments."

@@ -17,6 +17,7 @@
 	# "--delete"= delete files that exist on DESTINATION BUT NOT SOURCE" 
 	#OPTS=("-Eavz --delete-excluded")
 	UPDATE_OPTS=("-avz --update")
+	#UPDATE_OPTS=("-avz --delete --delete-excluded --force")
 
 ############################
 # Rsync: Options

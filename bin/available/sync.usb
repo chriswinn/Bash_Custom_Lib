@@ -1,0 +1,47 @@
+#!/bin/sh
+
+############################
+########## BEGIN: setting up Sync
+############################
+	############################
+	# Backup: Default Sync Variables
+	# Section
+	############################
+	SYNC_FOLDER=$HOME/SyncUSB
+
+	############################
+	# Sync: Preparation
+	# Section
+	############################
+	DEFAULT_SYNC_IMPORTS="$HOME/.bash_custom/bin/lib/sync/_sync.import"
+	#### rsync - script settings
+	    if [ -f $DEFAULT_SYNC_IMPORTS ]; then
+			verbose.print "# Importing sync preparation settings from '$DEFAULT_SYNC_IMPORTS'."
+			. $DEFAULT_SYNC_IMPORTS
+		else
+			error.filenotfound $DEFAULT_SYNC_IMPORTS
+	    fi
+
+############################
+########## END: setting up Sync
+############################
+
+############################
+# Script: Sync
+# Section
+############################
+echo "############################"
+echo "Syncing Drive(s)"
+echo "############################"
+for drive in /Volumes/*WINN
+do
+	if [ -d $drive ]; then
+		echo $drive
+		#rsync -avz --delete-before --force --progress $SYNC_FOLDER/ $drive/ && \
+		echo "######## Finished Updating $DEFAULT_SYNC_DESTINATION from $SYNC_FOLDER/ #########" && \
+		echo
+	else
+		error.filenotfound $DEFAULT_SYNC_DESTINATION
+    fi
+done
+echo

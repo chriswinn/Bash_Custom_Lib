@@ -1,7 +1,9 @@
 [user]
-	name = Christopher L. Winn
-	email = christopher.winn@clearthinker.com
+	name = Chris Winn
+	email = chriswinn@gmail.com
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+[alias]
+	co = checkout

@@ -1,0 +1,34 @@
+############################
+#
+# Rsync USB Defaults Directorties Script
+# Coded by: Christopher L. Winn
+# Version 1.0
+#
+#	To use this script simply fill in the variable(s) below
+#	If you want to disable certain features read the comments on how to change it
+#
+############################
+# Directories: Backup Drive
+# Section
+############################
+DEFAULT_SCRIPT="$HOME/.bash_custom/bin/lib/script/_flags.filename"
+#### script - flags
+    if [ -f $DEFAULT_SCRIPT ]; then
+		verbose.print "# Setting the $SCRIPT_NAME flags from '$DEFAULT_SCRIPT'."
+		. $DEFAULT_SCRIPT
+	else
+		error.filenotfound $DEFAULT_SCRIPT
+    fi
+
+############################
+# Directories: Whichever USB Drives Are Attached
+# Section
+############################
+DEFAULT_SCRIPT="$HOME/.bash_custom/bin/lib/script/_flags.filename"
+#### script - flags
+    if [ -f $DEFAULT_SCRIPT ]; then
+		verbose.print "# Setting the $SCRIPT_NAME flags from '$DEFAULT_SCRIPT'."
+		. $DEFAULT_SCRIPT
+	else
+		error.filenotfound $DEFAULT_SCRIPT
+    fi
