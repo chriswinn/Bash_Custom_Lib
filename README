@@ -1,0 +1,18 @@
+Welcome to Chris Winn's Bash_Custom_Lib Project
+
+This is project is an abstraction layer for bash to make light work of common tasks. 
+I need to do some refactoring as some things are hard wired.  I'd like to automatically 
+check OS/programs available and act accordingly. 
+
+
+----------------------------------
+Stuff our legal folk make us say:
+
+Chris Winn associated marks and logos are trademarks of Christopher L. Winn 
+
+Bash_Custom_Lib is Copyright (c) 2009-Eternity by Chris Winn. All Rights Reserved.
+
+Bash_Custom_Lib is licensed under the Apache Public License (Version 2). Please
+see the LICENSE file for the full license.
+
+
